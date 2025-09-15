@@ -1,6 +1,7 @@
 # Ollama Service
 
-Our target is to deploy Ollama on VM (Azure or EC2) for running inference tasks. But we also make sure only some allowed persons can access to VM and support concurrent requests.
+Our goal is to deploy Ollama on a virtual machine (Azure or EC2) to handle inference tasks. Access to the VM will be restricted to authorized users only, while supporting concurrent requests. In addition, monitoring and logging will be enabled to ensure issues can be quickly identified and resolved.
+
 
 ## Deployment Features
 
