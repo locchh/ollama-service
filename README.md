@@ -99,6 +99,20 @@ ollama run deepseek-r1:1.5b
 
 **Step7**: Configure concurrency handling
 
+```bash
+# Stop the current container
+sudo docker stop ollama
+
+# Remove it
+sudo docker rm ollama
+
+# Start a new one with OLLAMA_NUM_PARALLEL
+sudo docker run -d -p 11434:11434 \
+  -e OLLAMA_NUM_PARALLEL=2 \
+  -v ollama-volume:/root/.ollama \
+  --name ollama ollama/ollama
+```
+
 **Step8**: Set up Redis for job queue
 
 **Step9**: Set up Prometheus and Grafana for monitoring
