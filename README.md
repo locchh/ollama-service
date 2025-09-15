@@ -2,7 +2,6 @@
 
 Our goal is to deploy Ollama on a virtual machine (Azure or EC2) to handle inference tasks. Access to the VM will be restricted to authorized users only, while supporting concurrent requests. In addition, monitoring and logging will be enabled to ensure issues can be quickly identified and resolved.
 
-
 ## Deployment Features
 
 - Containerization (Docker)
