@@ -1,6 +1,6 @@
 # Ollama Service
 
-Deploy Ollama on VM (Ubuntu 22.04) on Azure or EC2.
+Our target is to deploy Ollama on VM (Azure or EC2) for running inference tasks. But we also make sure only some allowed persons can access to VM and support concurrent requests.
 
 ## Deployment Features
 
@@ -76,11 +76,23 @@ docker-compose --version
 
 **Step5**: Pull Ollama image
 
+- Pull Ollama image from Docker Hub:
+
 ```bash
 sudo docker pull ollama/ollama
 
 # Verify image
 sudo docker images
+```
+
+- (Addtional) We can run the container to test:
+
+```bash
+sudo docker run -d -p 11434:11434 -v ollama-volume:/root/.ollama --name ollama ollama/ollama
+
+sudo docker exec -it ollama bash
+
+ollama run deepseek-r1:1.5b
 ```
 
 **Step6**: Set up Nginx as reverse proxy [Link](docs/setup_nginx.md)
@@ -91,3 +103,11 @@ sudo docker images
 
 **Step9**: Set up Prometheus and Grafana for monitoring
 
+## References
+
+- [Ollama](https://ollama.com/)
+- [Docker](https://www.docker.com/)
+- [Nginx](https://www.nginx.com/)
+- [Redis](https://redis.io/)
+- [Prometheus](https://prometheus.io/)
+- [Grafana](https://grafana.com/)
