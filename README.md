@@ -12,7 +12,7 @@ Our goal is to deploy Ollama on a virtual machine (Azure or EC2) to run inferenc
 
 ## Guide
 
-**Step1**: Create VM [Link](docs/setup_machine.md)
+**Step1**: Create VM [Link](docs/setup_vm.md)
 
 **Step2**: Connect to VM via SSH
 
