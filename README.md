@@ -1,6 +1,6 @@
 # Ollama Service
 
-Our goal is to deploy Ollama on a virtual machine (Azure or EC2) to handle inference tasks. Access to the VM will be restricted to authorized users only, while supporting concurrent requests. In addition, monitoring and logging will be enabled to ensure issues can be quickly identified and resolved.
+Our goal is to deploy Ollama on a virtual machine (Azure or EC2) to run inference tasks. Access will be restricted to authorized users, with support for concurrent requests. We will also enable monitoring and logging to quickly detect and resolve issues, while ensuring the system remains resilient and stable.
 
 ## Deployment Features
 
@@ -88,7 +88,12 @@ sudo docker images
 - (Addtional) We can run the container to test:
 
 ```bash
-sudo docker run -d -p 11434:11434 -v ollama-volume:/root/.ollama --name ollama ollama/ollama
+sudo docker run -d \
+  -p 11434:11434 \
+  -v ollama-volume:/root/.ollama \
+  --restart unless-stopped \
+  --name ollama \
+  ollama/ollama
 
 sudo docker exec -it ollama bash
 
@@ -107,21 +112,29 @@ sudo docker stop ollama
 sudo docker rm ollama
 
 # Start a new one with OLLAMA_NUM_PARALLEL
-sudo docker run -d -p 11434:11434 \
+sudo docker run -d \
+  -p 11434:11434 \
   -e OLLAMA_NUM_PARALLEL=2 \
   -v ollama-volume:/root/.ollama \
-  --name ollama ollama/ollama
+  --restart unless-stopped \
+  --name ollama \
+  ollama/ollama
 ```
 
-**Step8**: Set up Redis for job queue
+**Step8**: Set up k3s [Link](docs/setup_k3s.md)
 
-**Step9**: Set up Prometheus and Grafana for monitoring
+**Step9**: Set up Redis for job queue [Link](docs/setup_redis.md)
+
+**Step10**: Scale horizontally
+
+**Step11**: Set up monitoring and logging
 
 ## References
 
 - [Ollama](https://ollama.com/)
 - [Docker](https://www.docker.com/)
 - [Nginx](https://www.nginx.com/)
+- [K3s](https://k3s.io/)
 - [Redis](https://redis.io/)
 - [Prometheus](https://prometheus.io/)
 - [Grafana](https://grafana.com/)
