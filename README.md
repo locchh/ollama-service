@@ -88,10 +88,13 @@ sudo docker images
 - (Addtional) We can run the container to test:
 
 ```bash
+# set memory and cpus to avoid OOM kill
 sudo docker run -d \
   -p 11434:11434 \
   -v ollama-volume:/root/.ollama \
   --restart unless-stopped \
+  --memory=8g \
+  --cpus=4 \
   --name ollama \
   ollama/ollama
 
@@ -117,6 +120,8 @@ sudo docker run -d \
   -e OLLAMA_NUM_PARALLEL=2 \
   -v ollama-volume:/root/.ollama \
   --restart unless-stopped \
+  --memory=8g \
+  --cpus=4 \
   --name ollama \
   ollama/ollama
 ```
