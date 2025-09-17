@@ -13,6 +13,7 @@ Our goal is to deploy Ollama on a virtual machine (Azure or EC2) to run inferenc
 ## Solution
 
 - [Solution 1](./docs/deploy_1.md)
+- [Solution 2](./docs/deploy_2.md)
 
 ## References
 
